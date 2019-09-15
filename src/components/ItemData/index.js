@@ -78,12 +78,13 @@ const Presenter = (props) =>
         className='mainpaper md-background--card'
       >
         <div className='buttons-container'>
+          {props.actionList &&
           <Button
             floating mini
             iconChildren='navigate_before'
             onClick={props.handleList}
             tooltipLabel={props.actionList || 'List'}
-          />
+          />}
           {props.isNew ? props.titleNew : <h2>{props.title}<br />{props.data['name']}</h2>}
           {(props.canDelete && !props.isNew) &&
           <Button

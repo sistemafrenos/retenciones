@@ -10,6 +10,7 @@ const InlineEditor = ({ element, onChange, value, defaultValue, error, onSelect 
   return (<Fragment>
     { (element.type === 'text' || element.type === 'json') &&
       <TextField
+        disabled={!element.edit}
         id={element.field}
         name={element.field}
         label={element.label}

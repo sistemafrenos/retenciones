@@ -7,5 +7,23 @@ import registerServiceWorker from './registerServiceWorker'
 import 'typeface-roboto/index.css'
 import 'material-design-icons/iconfont/material-icons.css'
 
-ReactDOM.render(<Router><App /></Router>, document.getElementById('root'))
+import { reducer } from './reducer';
+import { StateProvider } from './state';
+
+const Main = () => {
+  const initialState = {
+    parameters: { name: 'Empresa aun no registrada', loading: true }
+  }
+  
+  return (
+    <Router>
+      <StateProvider initialState={initialState} reducer={reducer}>
+        <App />
+      </StateProvider >
+    </Router>
+  )
+}
+
+
+ReactDOM.render(<Main />, document.getElementById('root'))
 registerServiceWorker()

@@ -38,6 +38,7 @@ export class DbService extends BaseService {
   }
 
   addItem (Item) {
+    console.log(Item)
     return this.connection.insert({
       into: this.tableName,
       values: [Item],
@@ -71,5 +72,9 @@ export class DbService extends BaseService {
         id: parseInt(id)
       }
     })
+  }
+
+  cancelQuery () {
+    console.log(this.connection.terminate())
   }
 }
