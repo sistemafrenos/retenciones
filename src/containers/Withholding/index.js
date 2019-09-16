@@ -4,6 +4,7 @@ import { hasPermission } from '../../utils'
 import Presenter from './presenter'
 import { DbService } from '../../service/dbService'
 import moment from 'moment'
+import { useStateValue } from '../../state'
 const service = new DbService('Withholdings')
 
 const options = {
@@ -60,6 +61,7 @@ const prepareData = d => {
 
 function Container () {
   const [state, setState] = useState(options.defaultState)
+  const [{ parameters }] = useStateValue();
   const { history, match } = useReactRouter()
   const id = match.params.id
 
@@ -70,13 +72,20 @@ function Container () {
           const data = await service.getItemById(id)
           setState({ ...options.defaultState, data ,loading: false, isNew: false})
         } else {
-          setState({ ...options.defaultState, loading: false})
+          const data = {
+            vaucher_date: moment().toDate(),
+            period: parameters.period,
+            aliquot: parameters.aliquot,
+            percentage: parameters.percentage
+          }
+          setState({ ...options.defaultState, data, loading: false})
         }
       } catch (ex) {
         console.error(ex)
       }
     }
     fetchData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   const setToast = toasts => {

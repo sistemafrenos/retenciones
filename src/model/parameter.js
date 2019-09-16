@@ -22,6 +22,9 @@ export const tblParameters = {
     },
     aliquot: {
       dataType: DATA_TYPE.number
+    },
+    vaucher: {
+      dataType: DATA_TYPE.number
     }
   }
 }

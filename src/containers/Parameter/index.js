@@ -28,6 +28,7 @@ const options = {
     {field: 'address', label: 'Direccion', type: 'text', edit: true, className: 'md-cell md-cell--12'},
     {field: 'period', label: 'Periodo', type: 'number', edit: true, className: 'md-cell md-cell--6'},
     {field: 'aliquot', label: 'Alicuota', type: 'number', edit: true, className: 'md-cell md-cell--2'},
+    {field: 'vaucher', label: 'Ultimo Comprobante', type: 'number', edit: true, className: 'md-cell md-cell--2'},
     {field: 'percentage', label: 'Porcentaje Retencion', type: 'number', edit: true, className: 'md-cell md-cell--2'}
   ],
   defaultState: { data:{}, toasts:[], loading: true, isNew: true },
